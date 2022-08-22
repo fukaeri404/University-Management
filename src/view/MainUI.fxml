@@ -91,26 +91,27 @@
                      <children>
                         <HBox spacing="20.0">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#processAddStudent" prefWidth="100.0" text="Add">
+                              <Button mnemonicParsing="false" onAction="#processAddStudent" prefHeight="26.0" prefWidth="70.0" text="Add">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="btn_delete" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#processDeleteStudent" prefWidth="100.0" text="Delete">
+                              <Button fx:id="btn_delete" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#processDeleteStudent" prefHeight="26.0" prefWidth="70.0" text="Delete">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Button>
-                              <Button layoutX="150.0" layoutY="10.0" mnemonicParsing="false" onAction="#processShowStudents" prefWidth="150.0" text="Show All Students">
+                              <Button layoutX="150.0" layoutY="10.0" mnemonicParsing="false" onAction="#processShowStudents" prefHeight="26.0" prefWidth="128.0" text="Show All Students">
                                  <font>
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Button>
-                              <ComboBox fx:id="cbbYear" onAction="#processYear" prefWidth="150.0" promptText="Academic Year">
+                              <ComboBox fx:id="cbbYear" onAction="#processYear" prefHeight="26.0" prefWidth="133.0" promptText="Academic Year">
                                  <HBox.margin>
-                                    <Insets left="50.0" />
+                                    <Insets />
                                  </HBox.margin>
                               </ComboBox>
+                              <ComboBox fx:id="cbbMajor" layoutX="359.0" layoutY="10.0" onAction="#processMajor" prefHeight="26.0" prefWidth="133.0" promptText="Major" />
                            </children>
                            <VBox.margin>
                               <Insets top="5.0" />
@@ -140,7 +141,7 @@
                                     <Font name="System Bold" size="12.0" />
                                  </font>
                               </Button>
-                              <ComboBox fx:id="cbb_course" prefWidth="150.0" promptText="Courses">
+                              <ComboBox fx:id="cbbCourse" prefWidth="150.0" promptText="Courses">
                                  <HBox.margin>
                                     <Insets left="220.0" />
                                  </HBox.margin>

@@ -29,8 +29,11 @@ public class MainController implements Initializable {
 	private ComboBox<String> cbbYear;
 
 	@FXML
-	private ComboBox<?> cbb_course;
+	private ComboBox<String> cbbMajor;
 
+	@FXML
+	private ComboBox<?> cbbCourse;
+	
 	@FXML
 	private ListView<Student> lvStudent;
 
@@ -45,10 +48,12 @@ public class MainController implements Initializable {
 
 	@FXML
 	private Button btn_delete;
-
 	
 	private static final DataSource data = new DataSource();
 	private static final ObservableList<Student> students_list = data.getAllStudents(); // store final student datas
+	
+	private String selectedYear ="";
+	private String selectedMajor ="";
 
 	@FXML
 	void processAddStudent(ActionEvent event) throws IOException {
@@ -78,18 +83,46 @@ public class MainController implements Initializable {
 
 	@FXML
 	void processYear(ActionEvent event) {
-		String selectedYear = cbbYear.getSelectionModel().getSelectedItem();
+		selectedYear = cbbYear.getSelectionModel().getSelectedItem();
 		ObservableList<Student> tempList = FXCollections.observableArrayList();
-		for (Student student : students_list) {
-			if (student.getYear().equals(selectedYear))
-				tempList.add(student);
+		if(!selectedMajor.isEmpty()) {
+			for (Student student : students_list) {
+				if (student.getYear().equals(selectedYear)&&student.getMajor().equals(selectedMajor))
+					tempList.add(student);
+			}
+		}else {
+			for (Student student : students_list) {
+				if (student.getYear().equals(selectedYear))
+					tempList.add(student);
+			}
 		}
 		lvStudent.setItems(tempList);
+		
 	}
 
 	@FXML
+	void processMajor(ActionEvent event) {
+		selectedMajor = cbbMajor.getSelectionModel().getSelectedItem();
+		ObservableList<Student> tempList = FXCollections.observableArrayList();
+		if(!selectedYear.isEmpty()) {
+			for (Student student : students_list) {
+				if (student.getMajor().equals(selectedMajor)&&student.getYear().equals(selectedYear))
+					tempList.add(student);
+			}
+		}else {
+			for (Student student : students_list) {
+				if (student.getMajor().equals(selectedMajor))
+					tempList.add(student);
+			}
+		}
+		lvStudent.setItems(tempList);
+		
+	}
+	
+	@FXML
 	public void processShowStudents(ActionEvent event) {
 		lvStudent.setItems(students_list);
+		System.out.println("0");
 	}
 
 	@FXML
@@ -121,11 +154,11 @@ public class MainController implements Initializable {
 		ObservableList<String> year = FXCollections.observableArrayList("First Year", "Second Year", "Third Year",
 				"Final Year");
 		cbbYear.getItems().addAll(year);
+		ObservableList<String> major = FXCollections.observableArrayList("English", "Philosophy", "Mathematics",
+				"Myanmar");
+		cbbMajor.setItems(major);
 		btn_delete.setDisable(true);
 
 	}
-
-
-	
 
 }

@@ -15,6 +15,10 @@ public class DataSource {
 		students_list.add(new Student(3, "MaMya", "Female", "Philosophy", "Final Year"));
 		students_list.add(new Student(4, "MgKyaw", "Male", "Mathematics", "Second Year"));
 		students_list.add(new Student(5, "MgKhway", "Male", "Myanmar", "Third Year"));
+		students_list.add(new Student(6, "MaSwe", "Female", "Philosophy", "Third Year"));
+		students_list.add(new Student(7, "MgTun", "Male", "English", "Final Year"));
+		students_list.add(new Student(8, "MaThet", "Female", "Mathematics", "Second Year"));
+		students_list.add(new Student(9, "MaNi", "Female", "English", "Second Year"));
 		return students_list;
 	}
 	

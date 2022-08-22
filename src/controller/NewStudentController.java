@@ -81,6 +81,7 @@ public class NewStudentController implements Initializable {
 		ObservableList<String> major = FXCollections.observableArrayList("English", "Philosophy", "Mathematics",
 				"Myanmar");
 		cbb_major.setItems(major);
+		
 		id = DataSource.getStudents_list().size() + 1;
 		txtId.setText(String.valueOf(id));
 	}
