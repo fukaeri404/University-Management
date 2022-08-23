@@ -10,7 +10,7 @@ public class DataSource {
 	private static final ObservableList<Student> students_list = FXCollections.observableArrayList();
 	private static final ObservableList<Teacher> teachers_list = FXCollections.observableArrayList();
 
-	public ObservableList<Student> getAllStudents() {
+	public static ObservableList<Student> getAllStudents() {
 		students_list.add(new Student(1, "MgZaw", "Male", "English", "First Year"));
 		students_list.add(new Student(2, "MaSabal", "Female", "English", "First Year"));
 		students_list.add(new Student(3, "MaMya", "Female", "Philosophy", "Final Year"));
@@ -23,11 +23,11 @@ public class DataSource {
 		return students_list;
 	}
 
-	public  ObservableList<Student> getStudents_list() {
+	public static ObservableList<Student> getStudents_list() {
 		return students_list;
 	}
 
-	public ObservableList<Teacher> getAllTeachers() {
+	public static ObservableList<Teacher> getAllTeachers() {
 		teachers_list.add(new Teacher("DawMoePwint", "Mathematics", "Professor", divideMajor("Mathematics")));
 		teachers_list.add(new Teacher("DawKyatPinSein", "English", "Teacher", divideMajor("English")));
 		teachers_list.add(new Teacher("UKazunYwat", "Philosophy", "Teacher", divideMajor("Philosophy")));

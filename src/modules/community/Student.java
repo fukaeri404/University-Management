@@ -8,8 +8,6 @@ public class Student {
 	private String major;
 	private String year;
 
-	public static final Student STUDENT_INSTANCE = new Student();
-
 	public Student() {
 		// TODO Auto-generated constructor stub
 	}
@@ -62,6 +60,7 @@ public class Student {
 	public void setYear(String year) {
 		this.year = year;
 	}
+	
 
 	@Override
 	public String toString() {

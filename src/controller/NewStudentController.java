@@ -47,6 +47,7 @@ public class NewStudentController implements Initializable {
 	String gender;
 	String major;
 	String year;
+	
 
 	@FXML
 	void ProcessGender(ActionEvent event) {
@@ -60,7 +61,7 @@ public class NewStudentController implements Initializable {
 
 	@FXML
 	void processFinish(ActionEvent event) {
-		Student student = Student.STUDENT_INSTANCE;
+		Student student = new Student();
 		student.setId(id);
 		student.setName(txtName.getText());
 		student.setMajor(cbb_major.getSelectionModel().getSelectedItem());

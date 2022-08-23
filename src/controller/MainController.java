@@ -72,16 +72,21 @@ public class MainController implements Initializable {
 
 	@FXML
 	private ProgressIndicator pgin;
+	
+	@FXML
+	private Label lbl_enrol;
 
-	static final DataSource data = new DataSource();
-	private static ObservableList<Student> students_list = data.getAllStudents(); // store final student datas
-	private static ObservableList<Teacher> teachers_list = data.getAllTeachers();
+	static DataSource data = new DataSource();
+	private static ObservableList<Student> students_list = DataSource.getAllStudents(); // store final student datas
+	private static ObservableList<Teacher> teachers_list = DataSource.getAllTeachers();
 	private volatile boolean stop = false;
 	private static final NumberBean numberBean = new NumberBean();
 
 	private String selectedYear = "";
 	private String selectedMajor = "";
 	private static Teacher selectedTeacher;
+	private int availStudents = 11;
+
 
 	Alert a = new Alert(AlertType.NONE);
 
@@ -99,6 +104,8 @@ public class MainController implements Initializable {
 			a.setContentText("Full Number");
 			a.show();
 		}
+		availStudents-=1;
+		lbl_enrol.setText("Available Students : "+availStudents );
 	}
 
 	@FXML
@@ -109,6 +116,8 @@ public class MainController implements Initializable {
 		}
 		students_list.remove(selectedStudent);
 		numberBean.setNumber(numberBean.getNumber() - 0.05);
+		availStudents+=1;
+		lbl_enrol.setText("Available Students : "+availStudents );
 	}
 
 	@FXML
@@ -187,7 +196,7 @@ public class MainController implements Initializable {
 		if (!vb_teacher.isVisible())
 			vb_teacher.setVisible(true);
 		teachers_list.clear();
-		teachers_list = data.getAllTeachers();
+//		teachers_list = DataSource.getAllTeachers();
 		lv_teacher.setItems(teachers_list);
 		stop = true;
 
@@ -258,7 +267,7 @@ public class MainController implements Initializable {
 		btn_delete.setDisable(true);
 		btnShowStudents.setDisable(true);
 		timeNow();
-
+		lbl_enrol.setText("Available Students : 11");
 		pgin.setProgress((double) students_list.size() / 20);
 		numberBean.setNumber((double) students_list.size() / 20);
 
@@ -266,6 +275,7 @@ public class MainController implements Initializable {
 			@Override
 			public void changed(ObservableValue<? extends Object> observable, Object oldValue, Object newValue) {
 				pgin.progressProperty().bind(numberBean.numberProperty());
+				
 //				lbl_enrol.setText(String.valueOf(Integer.parseInt(newValue.toString())));
 			}
 
