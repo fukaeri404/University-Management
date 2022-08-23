@@ -43,7 +43,7 @@ public class NewStudentController implements Initializable {
 	@FXML
 	private ComboBox<String> cbb_major;
 
-	private int id;
+	private static int id = 10;
 	String gender;
 	String major;
 	String year;
@@ -58,18 +58,19 @@ public class NewStudentController implements Initializable {
 			gender = "Gay";
 	}
 
-
 	@FXML
 	void processFinish(ActionEvent event) {
-		Student student = DataSource.getStudentInstance();
+		Student student = Student.STUDENT_INSTANCE;
 		student.setId(id);
 		student.setName(txtName.getText());
 		student.setMajor(cbb_major.getSelectionModel().getSelectedItem());
 		student.setYear(cbb_year.getSelectionModel().getSelectedItem());
 		student.setGender(gender);
-		DataSource.getStudents_list().add(student);
+		MainController.getStudentsList().add(student);
 		Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
 		stage.hide();
+		MainController.getNumberBean().setNumber(MainController.getNumberBean().getNumber() + 0.05);
+		id++;
 	}
 
 	@Override
@@ -77,12 +78,10 @@ public class NewStudentController implements Initializable {
 		ObservableList<String> year = FXCollections.observableArrayList("First Year", "Second Year", "Third Year",
 				"Final Year");
 		cbb_year.setItems(year);
-		
+
 		ObservableList<String> major = FXCollections.observableArrayList("English", "Philosophy", "Mathematics",
 				"Myanmar");
 		cbb_major.setItems(major);
-		
-		id = DataSource.getStudents_list().size() + 1;
 		txtId.setText(String.valueOf(id));
 	}
 

@@ -1,13 +1,14 @@
 package modules.community;
 
 public class Student {
+	
 	private int id;
 	private String name;
 	private String gender;
 	private String major;
 	private String year;
 
-	
+	public static final Student STUDENT_INSTANCE = new Student();
 
 	public Student() {
 		// TODO Auto-generated constructor stub
