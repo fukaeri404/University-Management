@@ -99,13 +99,13 @@ public class MainController implements Initializable {
 			Scene scene = new Scene(root);
 			stage.setScene(scene);
 			stage.show();
+			availStudents-=1;
+			lbl_enrol.setText("Available Students : "+availStudents );
 		} else {
 			a.setAlertType(AlertType.INFORMATION);
 			a.setContentText("Full Number");
 			a.show();
 		}
-		availStudents-=1;
-		lbl_enrol.setText("Available Students : "+availStudents );
 	}
 
 	@FXML
