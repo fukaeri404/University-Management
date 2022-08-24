@@ -196,7 +196,7 @@ public class MainController implements Initializable {
 		if (!vb_teacher.isVisible())
 			vb_teacher.setVisible(true);
 		teachers_list.clear();
-//		teachers_list = DataSource.getAllTeachers();
+		teachers_list = DataSource.getAllTeachers();
 		lv_teacher.setItems(teachers_list);
 		stop = true;
 
